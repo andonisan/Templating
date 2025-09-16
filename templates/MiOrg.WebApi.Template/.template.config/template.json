@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Mi Organización",
+  "name": "Web API Template Organizacional",
+  "identity": "MiOrg.WebApi.Template",
+  "shortName": "miwebapi",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "MiOrg.WebApi",
+  "preferNameDirectory": true,
+  "symbols": {
+    "UseSwagger": {
+      "type": "parameter",
+      "dataType": "bool",
+      "defaultValue": "true",
+      "description": "Include Swagger/OpenAPI documentation"
+    },
+    "UseEntityFramework": {
+      "type": "parameter",
+      "dataType": "bool",
+      "defaultValue": "true",
+      "description": "Include Entity Framework Core"
+    },
+    "Database": {
+      "type": "parameter",
+      "dataType": "choice",
+      "choices": [
+        {
+          "choice": "SqlServer",
+          "description": "SQL Server"
+        },
+        {
+          "choice": "PostgreSQL",
+          "description": "PostgreSQL"
+        },
+        {
+          "choice": "InMemory",
+          "description": "In-Memory (for development/testing)"
+        }
+      ],
+      "defaultValue": "SqlServer",
+      "description": "Database provider"
+    },
+    "IncludeAuth": {
+      "type": "parameter",
+      "dataType": "bool",
+      "defaultValue": "false",
+      "description": "Include JWT authentication"
+    },
+    "IncludeDocker": {
+      "type": "parameter",
+      "dataType": "bool",
+      "defaultValue": "true",
+      "description": "Include Docker configuration"
+    },
+    "IncludeTests": {
+      "type": "parameter",
+      "dataType": "bool",
+      "defaultValue": "true",
+      "description": "Include unit and integration tests"
+    }
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(!IncludeTests)",
+          "exclude": ["tests/**/*"]
+        },
+        {
+          "condition": "(!IncludeDocker)",
+          "exclude": ["**/Dockerfile", "**/.dockerignore"]
+        }
+      ]
+    }
+  ],
+  "postActions": [
+    {
+      "condition": "(!skipRestore)",
+      "description": "Restore NuGet packages",
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "continueOnError": true
+    }
+  ]
+}
