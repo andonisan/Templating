@@ -1,0 +1,19 @@
+/*#if (UseEntityFramework)*/
+using Microsoft.EntityFrameworkCore;
+
+namespace MiOrg.WebApi.Data;
+
+public class ApplicationDbContext : DbContext
+{
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+    {
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        
+        // Add your entity configurations here
+    }
+}
+/*#endif*/
