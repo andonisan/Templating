@@ -1,0 +1,23 @@
+{
+  "name": "templating",
+  "version": "1.0.0",
+  "description": "Presentación y recursos sobre .NET Templates para organizaciones",
+  "main": "index.js",
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export",
+    "spec:new": "node scripts/spec-new.js",
+    "spec:diff": "node scripts/spec-diff.js", 
+    "spec:report": "node scripts/spec-report.js",
+    "templates:test": "node scripts/templates-test.js",
+    "templates:pack": "node scripts/templates-pack.js"
+  },
+  "keywords": ["dotnet", "templates", "slidev", "presentation"],
+  "author": "andonisan",
+  "license": "ISC",
+  "devDependencies": {
+    "@slidev/cli": "^52.1.0",
+    "@slidev/theme-default": "^0.25.0"
+  }
+}
